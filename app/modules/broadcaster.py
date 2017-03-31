@@ -12,9 +12,9 @@ class Broadcaster(object):
 
     def _set_config(self, **args):
         configs = {
-            addr = '224.0.0.1',
-            bind = '0.0.0.0',
-            port = 3000
+            addr: '224.0.0.1',
+            bind: '0.0.0.0',
+            port: 3000
         }
         self.addr = args.get('addr', default=configs['addr'])
         self.bind = args.get('bind', default=configs['bind'])
@@ -32,7 +32,7 @@ class Broadcaster(object):
 
 
     def read(self):
-        """it returns a tuple (message, address)"""
+        """it returns a tuple (message, address)""
         return self.sock.recvfrom(255)
 
 

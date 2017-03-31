@@ -10,7 +10,7 @@ class Broadcaster(object):
         set_config(**args)
 
 
-    def _set_config(self, **args):
+    def set_config(self, **args):
         configs = {
             addr: '224.0.0.1',
             bind: '0.0.0.0',

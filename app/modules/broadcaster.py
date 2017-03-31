@@ -6,7 +6,7 @@ import struct
 class Broadcaster(object):
 
     def __init__(self, **args):
-        super(Listener, self).__init__()
+        super(Broadcaster, self).__init__()
         set_config(**args)
 
 

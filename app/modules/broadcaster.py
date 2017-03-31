@@ -7,7 +7,7 @@ class Broadcaster(object):
 
     def __init__(self, **args):
         super(Broadcaster, self).__init__()
-        set_config(**args)
+        self.set_config(**args)
 
 
     def set_config(self, **args):

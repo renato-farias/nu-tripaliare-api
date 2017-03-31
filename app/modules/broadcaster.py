@@ -32,7 +32,7 @@ class Broadcaster(object):
 
 
     def read(self):
-        "it returns a tuple (message, address)"
+        """it returns a tuple (message, address)"""
         return self.sock.recvfrom(255)
 
 

@@ -11,18 +11,18 @@ class Clustering(object):
         self.nodes = []
 
 
-    def get_current_time():
+    def get_current_time(self):
         return int(time.time())
 
 
-    def get_timeout_node():
-        return int(time.time())+10
+    def get_timeout_node(self):
+        return self.get_current_time()+10
 
 
     def update_last_ping(self, node):
         for n in self.nodes:
             if n['node'] == node:
-                n['last_ping'] = get_current_time()
+                n['last_ping'] = self.get_current_time()
                 break
         return
 
@@ -31,7 +31,7 @@ class Clustering(object):
         if node not in self.nodes:
             self.nodes.append({
                     'node': node,
-                    'last_ping': get_current_time()
+                    'last_ping': self.get_current_time()
                 })
         else:
             self.update_last_ping(node)
@@ -57,6 +57,6 @@ class Clustering(object):
 
     def remove_down_nodes(self):
         for n in self.nodes:
-            if int(n['last_ping']) > get_timeout_node():
+            if int(n['last_ping']) > self.get_timeout_node():
                 self.nodes.remove(n)
 

@@ -34,10 +34,10 @@ def hello_world():
 
 if __name__ == '__main__':
     try:
+        app.run(debug=True)
         thread_name = 1
         logger.info('Starting new Thread [%d]' % thread_name)
         thread.start_new_thread(read_brd,(t,))
-        app.run(debug=True)
     except Exception, e:
         import sys, traceback
         traceback.print_exc(file=sys.stdout)

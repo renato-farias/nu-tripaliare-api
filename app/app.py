@@ -6,9 +6,11 @@ import thread
 import logging.config
 
 from flask import Flask
+from modules.clustering import Clustering
 from modules.broadcaster import Broadcaster
-from modules.message_handling import MessageHandling
 from werkzeug.contrib.cache import SimpleCache
+from modules.message_handling import MessageHandling
+
 
 app = Flask('nu-tripaliare-api', static_url_path='')
 app.secret_key = 'nu-tripaliare-api'
@@ -17,6 +19,8 @@ logging.config.dictConfig(yaml.load(open('config/logging.yaml')))
 logger = app.logger
 
 cache = SimpleCache()
+
+cluster = Clustering()
 
 def read_brd(thread_name):
     logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)

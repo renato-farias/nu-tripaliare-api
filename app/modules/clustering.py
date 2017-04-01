@@ -28,7 +28,12 @@ class Clustering(object):
 
 
     def add_node(self, node):
-        if node not in self.nodes:
+        already = False
+        for n in self.nodes:
+            if n['node'] == node:
+                already = True
+
+        if not already:
             self.nodes.append({
                     'node': node,
                     'last_ping': self.get_current_time()

@@ -33,6 +33,8 @@ def read_brd(thread_name):
         })
     cluster.add_node(socket.gethostname())
     while True:
+        logger.debug('[Thread-%d] Wating for broadcast massages' % \
+                                                        thread_name)
         MessageHandling(broadcaster.read())
 
 thread_name = 1

@@ -16,9 +16,9 @@ class Broadcaster(object):
             'bind': '0.0.0.0',
             'port': 3000
         }
-        self.addr = args.get('addr', default=configs['addr'])
-        self.bind = args.get('bind', default=configs['bind'])
-        self.port = args.get('port', default=configs['port'])
+        self.addr = args.get('addr', configs['addr'])
+        self.bind = args.get('bind', configs['bind'])
+        self.port = args.get('port', configs['port'])
 
 
     def start(self):

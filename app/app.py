@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import os
 import yaml
 import thread
-import socket
 import logging.config
 
 from flask import Flask
@@ -29,9 +29,9 @@ def read_brd(thread_name):
     broadcaster.start()
     broadcaster.send({
             'type': 'join_cluster',
-            'node_name': socket.gethostname()
+            'node_name': os.environ['APP_HOST']
         })
-    cluster.add_node(socket.gethostname())
+    cluster.add_node(os.environ['APP_HOST'])
     while True:
         logger.debug('[Thread-%d] Wating for broadcast massages' % \
                                                         thread_name)

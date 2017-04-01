@@ -28,7 +28,7 @@ class Broadcaster(object):
         self.sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, membership)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-        self.sock.bind((bind, port))
+        self.sock.bind((self.bind, self.port))
 
 
     def read(self):

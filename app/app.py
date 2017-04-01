@@ -34,7 +34,7 @@ def hello_world():
 def app_run(thread_name):
     logger.debug('[Thread-%d] Loading App' % thread_name)
     try:
-        app.run(debug=True, threaded=True)
+        app.run(debug=True)
     except Exception, e:
         import sys, traceback
         traceback.print_exc(file=sys.stdout)

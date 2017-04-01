@@ -18,12 +18,10 @@ logger = app.logger
 
 cache = SimpleCache()
 
-broadcaster = Broadcaster()
-broadcaster.start()
-
-
 def read_brd(thread_name):
     logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)
+    broadcaster = Broadcaster()
+    broadcaster.start()
     while True:
         MessageHandling(broadcaster.read())
 

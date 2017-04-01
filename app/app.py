@@ -3,6 +3,7 @@
 
 import yaml
 import thread
+import socket
 import logging.config
 
 from flask import Flask
@@ -26,16 +27,18 @@ def read_brd(thread_name):
     logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)
     broadcaster = Broadcaster()
     broadcaster.start()
+    broadcaster.send({
+            'type': 'join_cluster',
+            'node_name': socket.gethostname()
+        })
+    cluster.add_node(socket.gethostname())
     while True:
         MessageHandling(broadcaster.read())
 
 thread_name = 1
 logger.info('Starting new Thread [%d]' % thread_name)
 thread.start_new_thread(read_brd,(thread_name,))
-broadcaster.send({
-        'type': 'join_cluster',
-        'node_name': socket.gethostname()
-    })
+
 
 
 @app.route('/')

@@ -31,7 +31,7 @@ def hello_world():
     return 'Hello, World!'
 
 
-def app_run():
+def app_run(thread_name):
     logger.debug('[Thread-%d] Loading App' % thread_name)
     try:
         app.run(debug=True, threaded=True)

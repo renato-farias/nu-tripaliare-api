@@ -39,4 +39,4 @@ class Broadcaster(object):
     def send(self, message):
         ttl = struct.pack('b', 1)
         self.sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, ttl)
-        self.sock.sendto(message, (self.addr, self.port))
+        self.sock.sendto(str(message), (self.addr, self.port))

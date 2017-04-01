@@ -29,15 +29,18 @@ def read_brd(thread_name):
     while True:
         MessageHandling(broadcaster.read())
 
-
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
-
 thread_name = 1
 logger.info('Starting new Thread [%d]' % thread_name)
 thread.start_new_thread(read_brd,(thread_name,))
+broadcaster.send({
+        'type': 'join_cluster',
+        'node_name': socket.gethostname()
+    })
+
+
+@app.route('/')
+def hello_world():
+    return cluster.get_nodes()
 
 
 if __name__ == '__main__':

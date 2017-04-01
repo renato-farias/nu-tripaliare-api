@@ -4,7 +4,6 @@ from ast import literal_eval
 
 class MessageHandling(object):
 
-
     def __init__(self, message_object):
         super(MessageHandling, self).__init__()
         self.message, self.address = message_object
@@ -29,6 +28,10 @@ class MessageHandling(object):
                             ('MessageHandling', 'Type is missing'))
             return
 
-        if msg['type'] == 'join':
-            pass
+        if msg['type'] == 'join_cluster':
+            app.cluster.add_node(msg['node_name'])
+
+        if msg['type'] == 'ping_cluster':
+            app.cluster.pong(msg['node_name'])
+
 

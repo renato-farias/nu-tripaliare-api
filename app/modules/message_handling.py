@@ -7,7 +7,6 @@ class MessageHandling(object):
     def __init__(self, message_object):
         super(MessageHandling, self).__init__()
         self.message, self.address = message_object
-        print self.message, self.address
         self.parse_message()
 
 

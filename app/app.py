@@ -34,7 +34,7 @@ def read_brd(thread_name):
 thread_name = 1
 logger.info('Starting new Thread [%d]' % thread_name)
 thread.start_new_thread(read_brd,(thread_name,))
-
+cluster.join()
 
 
 @app.route('/')
@@ -44,7 +44,6 @@ def hello_world():
 
 if __name__ == '__main__':
     try:
-        cluster.join()
         app.run(debug=False)
     except Exception, e:
         import sys, traceback

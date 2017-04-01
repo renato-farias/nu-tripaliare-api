@@ -19,10 +19,11 @@ logging.config.dictConfig(yaml.load(open('config/logging.yaml')))
 logger = app.logger
 
 cache = SimpleCache()
+broadcaster = Broadcaster()
+cluster = Clustering()
 
 def read_brd(thread_name):
     logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)
-    broadcaster = Broadcaster()
     broadcaster.start()
     cluster.join()
     while True:
@@ -34,7 +35,6 @@ thread_name = 1
 logger.info('Starting new Thread [%d]' % thread_name)
 thread.start_new_thread(read_brd,(thread_name,))
 
-cluster = Clustering()
 
 @app.route('/')
 def hello_world():

@@ -31,21 +31,28 @@ def hello_world():
     return 'Hello, World!'
 
 
-def app_run(thread_name):
-    logger.debug('[Thread-%d] Loading App' % thread_name)
-    try:
-        app.run(debug=False, host='0.0.0.0', port=8080)
-    except Exception, e:
-        import sys, traceback
-        traceback.print_exc(file=sys.stdout)
-        print str(e)
+# def app_run(thread_name):
+#     logger.debug('[Thread-%d] Loading App' % thread_name)
+#     try:
+#         app.run(debug=False, host='0.0.0.0', port=8080)
+#     except Exception, e:
+#         import sys, traceback
+#         traceback.print_exc(file=sys.stdout)
+#         print str(e)
 
 
 thread_name = 1
 logger.info('Starting new Thread [%d]' % thread_name)
 thread.start_new_thread(read_brd,(thread_name,))
 
-thread_name = 2
-logger.info('Starting new Thread [%d]' % thread_name)
-thread.start_new_thread(app_run,(thread_name,))
+# thread_name = 2
+# logger.info('Starting new Thread [%d]' % thread_name)
+# thread.start_new_thread(app_run,(thread_name,))
 
+if __name__ == '__main__':
+    try:
+        app.run(debug=False)
+    except Exception, e:
+        import sys, traceback
+        traceback.print_exc(file=sys.stdout)
+        print str(e)

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import os
 import app
 import time
-import socket
 
 class Clustering(object):
 
@@ -52,7 +52,14 @@ class Clustering(object):
     def ping(self):
         app.broadcaster.send({
                 'type': 'ping_cluster',
-                'node_name': socket.gethostname()
+                'node_name': os.environ['APP_HOST']
+            })
+
+
+    def join(self):
+        app.broadcaster.send({
+                'type': 'join_cluster',
+                'node_name': os.environ['APP_HOST']
             })
 
 

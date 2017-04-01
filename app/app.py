@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import yaml
 import thread
 import logging.config
@@ -27,11 +26,6 @@ def read_brd(thread_name):
     logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)
     broadcaster = Broadcaster()
     broadcaster.start()
-    broadcaster.send({
-            'type': 'join_cluster',
-            'node_name': os.environ['APP_HOST']
-        })
-    cluster.add_node(os.environ['APP_HOST'])
     while True:
         logger.debug('[Thread-%d] Wating for broadcast massages' % \
                                                         thread_name)
@@ -50,6 +44,7 @@ def hello_world():
 
 if __name__ == '__main__':
     try:
+        cluster.join()
         app.run(debug=False)
     except Exception, e:
         import sys, traceback

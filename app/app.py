@@ -33,7 +33,7 @@ def hello_world():
 
 thread_name = 1
 logger.info('Starting new Thread [%d]' % thread_name)
-thread.start_new_thread(read_brd,(t,))
+thread.start_new_thread(read_brd,(thread_name,))
 
 
 if __name__ == '__main__':

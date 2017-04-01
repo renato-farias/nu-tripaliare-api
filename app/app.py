@@ -20,8 +20,6 @@ logger = app.logger
 
 cache = SimpleCache()
 
-cluster = Clustering()
-
 def read_brd(thread_name):
     logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)
     broadcaster = Broadcaster()
@@ -36,6 +34,7 @@ thread_name = 1
 logger.info('Starting new Thread [%d]' % thread_name)
 thread.start_new_thread(read_brd,(thread_name,))
 
+cluster = Clustering()
 
 @app.route('/')
 def hello_world():

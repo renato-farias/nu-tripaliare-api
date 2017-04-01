@@ -31,12 +31,8 @@ def hello_world():
     return 'Hello, World!'
 
 
-thread_name = 1
-logger.info('Starting new Thread [%d]' % thread_name)
-thread.start_new_thread(read_brd,(thread_name,))
-
-
-if __name__ == '__main__':
+def app_run():
+    logger.debug('[Thread-%d] Loading App' % thread_name)
     try:
         app.run(debug=True, threaded=True)
     except Exception, e:
@@ -44,5 +40,12 @@ if __name__ == '__main__':
         traceback.print_exc(file=sys.stdout)
         print str(e)
 
-while True:
-    pass
+
+thread_name = 1
+logger.info('Starting new Thread [%d]' % thread_name)
+thread.start_new_thread(read_brd,(thread_name,))
+
+thread_name = 2
+logger.info('Starting new Thread [%d]' % thread_name)
+thread.start_new_thread(app_run,(thread_name,))
+

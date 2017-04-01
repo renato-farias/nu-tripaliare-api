@@ -43,7 +43,7 @@ thread.start_new_thread(read_brd,(thread_name,))
 
 @app.route('/')
 def hello_world():
-    return cluster.get_nodes()
+    return str(cluster.get_nodes())
 
 
 if __name__ == '__main__':

@@ -50,6 +50,7 @@ class Clustering(object):
 
 
     def ping(self):
+        self.add_node(os.environ['APP_HOST'])
         app.broadcaster.send({
                 'type': 'ping_cluster',
                 'node_name': os.environ['APP_HOST']

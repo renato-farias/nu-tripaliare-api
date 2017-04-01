@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import app
 import socket
 import struct
 
@@ -37,6 +38,8 @@ class Broadcaster(object):
 
 
     def send(self, message):
+        app.logger.debug('[%s] Sending broadcast message: %s' % \
+            ('Broadcaster', str(message)))
         ttl = struct.pack('b', 1)
         self.sock.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_TTL, ttl)
         self.sock.sendto(str(message), (self.addr, self.port))

@@ -63,6 +63,19 @@ class Clustering(object):
             })
 
 
+    def leave(self):
+        app.broadcaster.send({
+                'type': 'leave_cluster',
+                'node_name': os.environ['APP_HOST']
+            })
+
+
+    def remove_node(self, node):
+        for n in self.nodes:
+            if ['node_name'] == node:
+                self.nodes.remove(n)
+
+
     def get_nodes(self):
         return self.nodes
 

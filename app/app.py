@@ -3,6 +3,7 @@
 
 import yaml
 import time
+import atexit
 import thread
 import logging.config
 
@@ -42,6 +43,10 @@ def ping_brd(thread_name):
         cluster.ping()
 
 
+def leave_cluster():
+    cluster.leave()
+
+
 def start_thread_read_brd():
     logger.info('Starting new Thread [%d]' % 1)
     thread.start_new_thread(read_brd,(1,))
@@ -54,6 +59,7 @@ def start_thread_ping_brd():
 
 start_thread_read_brd()
 start_thread_ping_brd()
+atexit.register(leave_cluster)
 
 
 @app.route('/')

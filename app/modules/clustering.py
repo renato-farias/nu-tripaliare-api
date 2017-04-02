@@ -15,8 +15,8 @@ class Clustering(object):
         return int(time.time())
 
 
-    def get_timeout_node(self):
-        return self.get_current_time()-30
+    def get_timeout_node(self, last_ping):
+        return int(last_ping)+30
 
 
     def update_last_ping(self, node):
@@ -82,7 +82,7 @@ class Clustering(object):
 
     def remove_down_nodes(self):
         for n in self.nodes:
-            if int(n['last_ping']) > self.get_timeout_node():
+            if self.get_timeout_node(n['last_ping']) > self.get_current_time:
                 app.logger.debug('[%s] Removing node from cluster: (%s)' % \
                                                 ('Clustering', n['node']))
                 self.nodes.remove(n)

@@ -58,7 +58,7 @@ class Clustering(object):
         # can take a long time to start
         self.node_handler(os.environ['APP_HOST'])
         app.broadcaster.send({
-                'type': 'join_cluster',
+                'type': 'ping_cluster',
                 'node_name': os.environ['APP_HOST']
             })
 

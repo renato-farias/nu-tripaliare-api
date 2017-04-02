@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import request
-from .modules.helpers import http_code
+from modules.helpers import http_code
 
 
 def schedule_create():

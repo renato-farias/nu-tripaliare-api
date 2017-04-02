@@ -66,6 +66,9 @@ atexit.register(leave_cluster)
 def hello_world():
     return str(cluster.get_nodes())
 
+## import routes
+import routes
+
 
 if __name__ == '__main__':
     try:

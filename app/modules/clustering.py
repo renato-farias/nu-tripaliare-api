@@ -83,6 +83,7 @@ class Clustering(object):
     def remove_down_nodes(self):
         for n in self.nodes:
             if int(n['last_ping']) > self.get_timeout_node():
+                print n
                 app.logger.debug('[%s] Removing node from cluster: (%s)' % \
                                                 ('Clustering', n['node_name']))
                 self.nodes.remove(n)

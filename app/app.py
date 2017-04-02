@@ -58,9 +58,9 @@ def hello_world():
 
 
 if __name__ == '__main__':
+    start_thread_read_brd()
+    start_thread_ping_brd()
     try:
-        start_thread_read_brd()
-        start_thread_ping_brd()
         app.run(debug=False)
     except Exception, e:
         import sys, traceback

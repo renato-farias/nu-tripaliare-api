@@ -36,10 +36,10 @@ def read_brd(thread_name):
 def ping_brd(thread_name):
     logger.debug('[Thread-%d] Loading Clustering Pinger' % thread_name)
     while True:
+        time.sleep(10)
         logger.debug('[Thread-%d] Telling to cluster that I am alive' % \
                                                             thread_name)
         cluster.ping()
-        time.sleep(10)
 
 logger.info('Starting new Thread [%d]' % 1)
 thread.start_new_thread(read_brd,(1,))

@@ -30,4 +30,7 @@ class MessageHandling(object):
         if msg['type'] == 'ping_cluster':
             app.cluster.node_handler(msg['node_name'])
 
+        if msg['type'] == 'leave_cluster':
+            app.cluster.remove_node(msg['node_name'])
+
 

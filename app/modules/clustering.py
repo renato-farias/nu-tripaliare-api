@@ -16,7 +16,7 @@ class Clustering(object):
 
 
     def get_timeout_node(self):
-        return self.get_current_time()+30
+        return self.get_current_time()-30
 
 
     def update_last_ping(self, node):

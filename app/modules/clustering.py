@@ -49,6 +49,8 @@ class Clustering(object):
         for n in self.nodes:
             if n['node'] == node:
                 self.update_last_ping(node)
+            else:
+                self.add_node(node)
         self.remove_down_nodes()
 
 

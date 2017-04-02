@@ -52,14 +52,16 @@ def start_thread_ping_brd():
     thread.start_new_thread(ping_brd,(2,))
 
 
+start_thread_read_brd()
+start_thread_ping_brd()
+
+
 @app.route('/')
 def hello_world():
     return str(cluster.get_nodes())
 
 
 if __name__ == '__main__':
-    start_thread_read_brd()
-    start_thread_ping_brd()
     try:
         app.run(debug=False)
     except Exception, e:

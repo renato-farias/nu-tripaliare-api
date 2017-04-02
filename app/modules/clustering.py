@@ -34,6 +34,8 @@ class Clustering(object):
                 already = True
 
         if not already:
+            app.logger.debug('[%s] Adding new node on cluster: (%s)' % \
+                                                ('Clustering', node))
             self.nodes.append({
                     'node': node,
                     'last_ping': self.get_current_time()
@@ -50,7 +52,6 @@ class Clustering(object):
 
 
     def ping(self):
-        self.add_node(os.environ['APP_HOST'])
         app.broadcaster.send({
                 'type': 'ping_cluster',
                 'node_name': os.environ['APP_HOST']
@@ -58,6 +59,10 @@ class Clustering(object):
 
 
     def join(self):
+        # this line below is necessary to assurance the will be
+        # joined on the cluster, because the MessageHandling
+        # can take a long time to start
+        self.add_node(os.environ['APP_HOST'])
         app.broadcaster.send({
                 'type': 'join_cluster',
                 'node_name': os.environ['APP_HOST']

@@ -46,8 +46,9 @@ class Clustering(object):
 
 
     def pong(self, node):
-        if node in self.nodes:
-            self.update_last_ping(node)
+        for n in self.nodes:
+            if n['node'] == node:
+                self.update_last_ping(node)
         self.remove_down_nodes()
 
 

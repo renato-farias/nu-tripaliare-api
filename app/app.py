@@ -41,14 +41,11 @@ def ping_brd(thread_name):
         cluster.ping()
         time.sleep(10)
 
-thread_name = 1
-logger.info('Starting new Thread [%d]' % thread_name)
-thread.start_new_thread(read_brd,(thread_name,))
+logger.info('Starting new Thread [%d]' % 1)
+thread.start_new_thread(read_brd,(1,))
 
-
-thread_name = 2
-logger.info('Starting new Thread [%d]' % thread_name)
-thread.start_new_thread(read_brd,(thread_name,))
+logger.info('Starting new Thread [%d]' % 2)
+thread.start_new_thread(ping_brd,(2,))
 
 
 @app.route('/')

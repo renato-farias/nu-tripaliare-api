@@ -19,6 +19,8 @@ def schedule_create():
 
     put_data = request.get_json(silent=True)
 
+    print put_data
+
     if not all (k in put_data.keys() for k in ('name', 'img')):
         return http_code(400, 'Bad Request: name and img keys are required.')
 

@@ -19,7 +19,7 @@ def schedule_create():
 
     put_data = request.get_json(silent=True)
 
-    if not is_intance(put_data, dict):
+    if not is_instance(put_data, dict):
         return http_code(400, 'Bad Request: You should include a json in your request.')
 
     if not all (k in put_data.keys() for k in ('name', 'img')):

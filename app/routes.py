@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import app
+from flask import Blueprint, current_app
 
-print dir(app)
+routes = Blueprint('routes', __name__, static_folder='../static')

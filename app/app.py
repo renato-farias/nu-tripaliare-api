@@ -8,6 +8,7 @@ import thread
 import logging.config
 
 from flask import Flask
+from routes import routes
 from modules.clustering import Clustering
 from modules.broadcaster import Broadcaster
 from werkzeug.contrib.cache import SimpleCache
@@ -67,7 +68,7 @@ def hello_world():
     return str(cluster.get_nodes())
 
 ## import routes
-import routes
+app.register_blueprint(routes)
 
 
 if __name__ == '__main__':

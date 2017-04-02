@@ -27,7 +27,7 @@ class Clustering(object):
         return
 
 
-    def add_node(self, node):
+    def node_handler(self, node):
         already = False
         for n in self.nodes:
             if n['node'] == node:
@@ -42,15 +42,6 @@ class Clustering(object):
                 })
         else:
             self.update_last_ping(node)
-        return
-
-
-    def pong(self, node):
-        for n in self.nodes:
-            if n['node'] == node:
-                self.update_last_ping(node)
-            else:
-                self.add_node(node)
         self.remove_down_nodes()
 
 
@@ -65,7 +56,7 @@ class Clustering(object):
         # this line below is necessary to assurance the will be
         # joined on the cluster, because the MessageHandling
         # can take a long time to start
-        self.add_node(os.environ['APP_HOST'])
+        self.node_handler(os.environ['APP_HOST'])
         app.broadcaster.send({
                 'type': 'join_cluster',
                 'node_name': os.environ['APP_HOST']

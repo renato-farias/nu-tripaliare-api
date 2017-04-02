@@ -36,16 +36,20 @@ def read_brd(thread_name):
 def ping_brd(thread_name):
     logger.debug('[Thread-%d] Loading Clustering Pinger' % thread_name)
     while True:
-        time.sleep(10)
+        time.sleep(30)
         logger.debug('[Thread-%d] Telling to cluster that I am alive' % \
                                                             thread_name)
         cluster.ping()
 
-logger.info('Starting new Thread [%d]' % 1)
-thread.start_new_thread(read_brd,(1,))
 
-logger.info('Starting new Thread [%d]' % 2)
-thread.start_new_thread(ping_brd,(2,))
+def start_thread_read_brd():
+    logger.info('Starting new Thread [%d]' % 1)
+    thread.start_new_thread(read_brd,(1,))
+
+
+def start_thread_ping_brd():
+    logger.info('Starting new Thread [%d]' % 2)
+    thread.start_new_thread(ping_brd,(2,))
 
 
 @app.route('/')
@@ -55,6 +59,8 @@ def hello_world():
 
 if __name__ == '__main__':
     try:
+        start_thread_read_brd()
+        start_thread_ping_brd()
         app.run(debug=False)
     except Exception, e:
         import sys, traceback

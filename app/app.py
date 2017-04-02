@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import yaml
+import time
 import thread
 import logging.config
 
@@ -31,7 +32,21 @@ def read_brd(thread_name):
                                                         thread_name)
         MessageHandling(broadcaster.read())
 
+
+def ping_brd(thread_name):
+    logger.debug('[Thread-%d] Loading Clustering Pinger' % thread_name)
+    while True:
+        logger.debug('[Thread-%d] Telling to cluster that I am alive' % \
+                                                            thread_name)
+        cluster.ping()
+        time.sleep(10)
+
 thread_name = 1
+logger.info('Starting new Thread [%d]' % thread_name)
+thread.start_new_thread(read_brd,(thread_name,))
+
+
+thread_name = 2
 logger.info('Starting new Thread [%d]' % thread_name)
 thread.start_new_thread(read_brd,(thread_name,))
 

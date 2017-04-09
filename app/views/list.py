@@ -10,9 +10,14 @@ def jobs_list():
     list_jobs = []
     jobs = get_jobs_collection().find({})
     for j in jobs:
+
+        _when = j.get('date_time', 'no-set')
+        if isinstance(when, datetime.datetime):
+            _when = _when.strftime('%d/%m/%Y - %H:%M')
+
         list_jobs.append({
             'name': j['job_name'],
-            'when': j.get('date_time', 'no-set'),
+            'when': _when,
             'img':  j['job_img'],
             'envs': {}
         })

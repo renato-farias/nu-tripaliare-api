@@ -12,7 +12,7 @@ def jobs_list():
     for j in jobs:
         list_jobs.append({
             'name': j['job_name'],
-            'when': j['date_time'],
+            'when': j.get('date_time', 'no-set'),
             'img':  j['job_img'],
             'envs': {}
         })

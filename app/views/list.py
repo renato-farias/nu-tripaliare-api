@@ -2,7 +2,7 @@
 
 import datetime
 
-from modules.helpers import c
+from modules.helpers import myjsonify
 from modules.mongodb import get_jobs_collection
 
 

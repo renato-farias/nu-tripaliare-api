@@ -4,7 +4,7 @@ import pymongo
 
 def get_mongodb():
     try:
-        c = pymongo.MongoClient('33.33.33.43', 27107)
+        c = pymongo.MongoClient('mongo', 27107)
         return c['nu-tripaliare']
     except:
         return None

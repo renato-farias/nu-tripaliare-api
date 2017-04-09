@@ -35,4 +35,4 @@ def schedule_create():
         'job_name': put_data['name'],
         'job_img': put_data['img']
     }
-    return get_jobs_collection().insert_one(_d).inserted_id
+    return str(get_jobs_collection().insert_one(_d).inserted_id)

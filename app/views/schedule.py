@@ -64,15 +64,13 @@ def schedule_create():
         return http_code(400, 'Date and Time are required if you set one of them.')
 
     if 'envs' in put_data.keys():
-        if not isinstance(put_data['envs'], list):
-            return http_code(400, 'envs field should be a list (array) of keys and values')
+        if not isinstance(put_data['envs'], dict):
+            return http_code(400, 'envs field should be a dict (hash) of keys and values')
         if len(put_data['envs']) > 0:
-            envs = []
+            envs = {}
             for k,v in put_data['envs'].iteritems():
                 try:
-                    envs.append({
-                            k: v
-                        })
+                    envs[k] = v
                 except:
                     continue
 

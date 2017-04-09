@@ -12,7 +12,7 @@ def jobs_list():
     for j in jobs:
 
         _when = j.get('date_time', 'no-set')
-        if isinstance(when, datetime.datetime):
+        if isinstance(_when, datetime.datetime):
             _when = _when.strftime('%d/%m/%Y - %H:%M')
 
         list_jobs.append({

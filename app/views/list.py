@@ -16,7 +16,8 @@ def jobs_list():
             'img':  j['job_img'],
             'envs': {}
         })
-        if 'envs' in j.keys() and isinstance(j['envs'], dict):
+        if 'envs' in j.keys() and isinstance(j['envs'], dict) \
+                                        and len(j['envs']) > 0:
             for ek, ev in j['envs']:
                 j['envs'][ek] = ev
 

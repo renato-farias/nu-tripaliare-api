@@ -2,7 +2,7 @@
 
 import datetime
 
-from flask import request
+from flask import request, jsonify
 from modules.helpers import http_code
 from modules.mongodb import get_jobs_collection
 
@@ -76,4 +76,8 @@ def schedule_create():
 
             _d['envs'] = envs
 
-    return str(get_jobs_collection().insert_one(_d).inserted_id)
+    try:
+        job_id = str(get_jobs_collection().insert_one(_d).inserted_id)
+        return http_code(201, 'Job created.', {'id': job_id})
+    except:
+        return http_code(500, 'Error while creating Job')

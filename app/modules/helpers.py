@@ -2,7 +2,10 @@
 
 from flask import jsonify
 
-def http_code(code, msg=''):
-    response = jsonify({'code': code,'message': msg})
+def http_code(code, msg='', info={}):
+    data = {'code': code,'message': msg}
+    if len(info) > 0:
+        data.update(info)
+    response = jsonify(data)
     response.status_code = code
     return response

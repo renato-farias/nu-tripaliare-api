@@ -52,8 +52,11 @@ def schedule_create():
             return http_code(400, 'Time required the following format: HH:MM.')
 
     if has_date and has_time:
-        date_time = datetime.datetime(int(put_date[2]), int(put_date[1]),
-                    int(put_date[0]), int(put_time[0]), int(put_time[1]))
+        try:
+            date_time = datetime.datetime(int(put_date[2]), int(put_date[1]),
+                        int(put_date[0]), int(put_time[0]), int(put_time[1]))
+        except:
+            return http_code(400, 'Date or time was set wrongly. Check and try again.')
         if date_time < datetime.datetime.now():
             return http_code(400, 'The day and time is prior from now.')
         _d['date_time'] = date_time

@@ -11,9 +11,9 @@ def jobs_list():
     jobs = get_jobs_collection().find({})
     for j in jobs:
         list_jobs.append({
-            'name': j['name'],
+            'name': j['job_name'],
             'when': j['date_time'],
-            'img':  j['img'],
+            'img':  j['job_img'],
             'envs': {}
         })
         if 'envs' in j.keys() and isinstance(j['envs'], dict):

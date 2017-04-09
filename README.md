@@ -8,6 +8,9 @@ curl -XPUT http://33.33.33.43:8081/api/schedule -d '{"name": "", "img": ""}' -H 
 curl -XPUT http://33.33.33.43:8080/api/schedule -d '{"name": "", "img": "", "date": "14/10/2017", "time": "10:30", "envs": {"env1": "valor"}}' -H 'Content-Type: application/json'
 
 
+http://33.33.33.43:8080/api/list
+
+
 docker run -d -p 27017:27017 mongo:latest
 
 docker run -d -p 27017:27017 --expose 27017 mongo:latest

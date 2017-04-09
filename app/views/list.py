@@ -19,7 +19,8 @@ def jobs_list():
             'name': j['job_name'],
             'when': _when,
             'img':  j['job_img'],
-            'envs': {}
+            'envs': {},
+            'status': 'scheduled'
         })
         if 'envs' in j.keys() and isinstance(j['envs'], dict) \
                                         and len(j['envs']) > 0:

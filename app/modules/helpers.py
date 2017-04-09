@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import jsonify
+from flask import make_response, jsonify
 
 def http_code(code, msg='', info={}):
     data = {'code': code,'message': msg}

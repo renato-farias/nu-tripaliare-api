@@ -16,7 +16,7 @@ def jobs_list():
             _when = _when.strftime('%d/%m/%Y - %H:%M')
 
         list_jobs.append({
-            'id': str(j['id']),
+            'id': str(j['_id']),
             'name': j['job_name'],
             'when': _when,
             'img':  j['job_img'],

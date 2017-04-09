@@ -18,7 +18,7 @@ def jobs_list():
         })
         if 'envs' in j.keys() and isinstance(j['envs'], dict) \
                                         and len(j['envs']) > 0:
-            for ek, ev in j['envs']:
+            for ek, ev in j['envs'].iteritems():
                 list_jobs['envs'][ek] = ev
 
     data = {'jobs': list_jobs}

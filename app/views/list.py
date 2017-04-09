@@ -2,7 +2,7 @@
 
 import datetime
 
-from modules.helpers import myjsonify
+from modules.helpers import myjsonify, objectid_to_apiid
 from modules.mongodb import get_jobs_collection
 
 
@@ -16,7 +16,7 @@ def jobs_list():
             _when = _when.strftime('%d/%m/%Y - %H:%M')
 
         list_jobs.append({
-            'id': str(j['_id']),
+            'id': objectid_to_apiid(str(j['_id'])),
             'name': j['job_name'],
             'when': _when,
             'img':  j['job_img'],

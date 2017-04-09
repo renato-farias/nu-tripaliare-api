@@ -23,3 +23,17 @@ def myjsonify(data=None, code=200, headers=None):
         code)
     r.headers['Content-Type'] = 'application/json; charset=utf-8'
     return r
+
+
+def objectid_to_apiid(strid):
+    """
+    000000000000000000000000 to 00000000-0000-0000-00000000
+    """
+    return  '%s-%s-%s-%s' % (strid[:8], strid[8:12], strid[12:16], strid[16:24])
+
+
+def apiid_to_objectid(strid):
+    """
+    00000000-0000-0000-00000000 to 000000000000000000000000
+    """
+    return  ''.join(strid.split('-'))

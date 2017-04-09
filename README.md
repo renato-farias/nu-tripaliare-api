@@ -5,6 +5,8 @@ nu-tripaliare-api
 
 curl -XPUT http://33.33.33.43:8081/api/schedule -d '{"name": "", "img": ""}' -H 'Content-Type: application/json'
 
+curl -XPUT http://33.33.33.43:8080/api/schedule -d '{"name": "", "img": "", "date": "10/10/2010", "time": "10:30"}' -H 'Content-Type: application/json'
+
 
 docker run -d -p 27017:27017 mongo:latest
 

@@ -76,6 +76,6 @@ def schedule_create():
                 except:
                     continue
 
-        _d['envs'] = envs
+            _d['envs'] = envs
 
     return str(get_jobs_collection().insert_one(_d).inserted_id)

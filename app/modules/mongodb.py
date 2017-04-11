@@ -9,8 +9,14 @@ def get_mongodb():
     except:
         return None
 
+
 def get_jobs_collection():
     c = get_mongodb()
     if c:
         return c['jobs']
     return None
+
+
+def drop_jobs_collection():
+    c = get_mongodb()
+    return c.drop_collection('jobs')

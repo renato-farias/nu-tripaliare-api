@@ -62,6 +62,8 @@ def schedule_create():
         _d['date_time'] = date_time
     elif has_date or has_time:
         return http_code(400, 'Date and Time are required if you set one of them.')
+    else:
+        _d['date_time'] = datetime.datetime.now()
 
     if 'envs' in put_data.keys():
         if not isinstance(put_data['envs'], dict):

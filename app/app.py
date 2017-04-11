@@ -14,9 +14,10 @@ from modules.broadcaster import Broadcaster
 from werkzeug.contrib.cache import SimpleCache
 from modules.message_handling import MessageHandling
 
-
 app = Flask('nu-tripaliare-api', static_url_path='')
 app.secret_key = 'nu-tripaliare-api'
+
+status = ['scheduled', 'queued', 'running', 'done', 'done_with_error']
 
 logging.config.dictConfig(yaml.load(open('config/logging.yaml')))
 logger = app.logger

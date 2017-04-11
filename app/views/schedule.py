@@ -35,7 +35,10 @@ def schedule_create():
 
     _d = {
         'job_name': put_data['name'],
-        'job_img': put_data['img']
+        'job_img': put_data['img'],
+        'job_status': 'scheduled',
+        'updated_at': datetime.datetime.now(),
+        'created_at': datetime.datetime.now()
     }
 
     # checking the date field is a correct and valid date.

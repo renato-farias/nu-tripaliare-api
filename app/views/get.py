@@ -21,7 +21,7 @@ def get_scheduled_jobs(limit=None):
                 'id': objectid_to_apiid(str(j['_id'])),
                 'name': j['job_name'],
                 'envs': {},
-                'status': 'scheduled'
+                'status': j['job_status']
             }
         )
         if 'envs' in j.keys() and isinstance(j['envs'], dict) \

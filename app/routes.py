@@ -3,7 +3,7 @@
 from flask import Blueprint, current_app
 
 from views.list import jobs_list
-from views.admin import jobs_list
+from views.admin import drop_collection
 from views.schedule import schedule_create
 
 routes = Blueprint('routes', __name__, static_folder='../static')

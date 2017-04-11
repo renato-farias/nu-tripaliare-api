@@ -10,6 +10,7 @@ from views.schedule import schedule_create
 routes = Blueprint('routes', __name__, static_folder='../static')
 
 routes.add_url_rule('/api/get', view_func=get_scheduled_jobs, methods=['GET'])
+routes.add_url_rule('/api/get/<int:limit>', view_func=get_scheduled_jobs, methods=['GET'])
 routes.add_url_rule('/api/list', view_func=jobs_list, methods=['GET'])
 routes.add_url_rule('/api/schedule', view_func=schedule_create, methods=['PUT'])
 

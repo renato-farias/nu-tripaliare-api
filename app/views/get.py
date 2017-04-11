@@ -13,7 +13,7 @@ def get_scheduled_jobs(limit=None):
         }
     }
     jobs = get_jobs_collection().find(query)
-    if limit not None:
+    if limit is not None:
         jobs = jobs.limit(int(limit))
     for j in jobs:
         list_schaduled.append(

@@ -2,14 +2,17 @@
 
 import datetime
 
+from modules.auth import requires_http_auth
 from modules.helpers import myjsonify, objectid_to_apiid
 from modules.mongodb import get_jobs_collection
 
+@requires_http_auth
 def get_scheduled_jobs(limit=None):
     list_scheduled = []
     query = {
         'date_time': {
-            '$lte': datetime.datetime.now()
+            '$lte': datetime.datetime.now(),
+            'job_status': 'scheduled'
         }
     }
     jobs = get_jobs_collection().find(query)

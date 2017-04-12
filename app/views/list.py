@@ -2,10 +2,11 @@
 
 import datetime
 
+from modules.auth import requires_http_auth
 from modules.helpers import myjsonify, objectid_to_apiid
 from modules.mongodb import get_jobs_collection
 
-
+@requires_http_auth
 def jobs_list():
     list_jobs = []
     jobs = get_jobs_collection().find({})

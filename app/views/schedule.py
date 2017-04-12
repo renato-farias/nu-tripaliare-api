@@ -3,10 +3,11 @@
 import datetime
 
 from flask import request, jsonify
+from modules.auth import requires_http_auth
 from modules.helpers import http_code
 from modules.mongodb import get_jobs_collection
 
-
+@requires_http_auth
 def schedule_create():
     """
     {

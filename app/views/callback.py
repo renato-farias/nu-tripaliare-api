@@ -3,10 +3,12 @@
 import app
 import datetime
 
+from modules.auth import requires_http_auth
 from bson.objectid import ObjectId
 from modules.helpers import apiid_to_objectid, http_code
 from modules.mongodb import get_jobs_collection
 
+@requires_http_auth
 def status_post(appid, status):
     _appid = apiid_to_objectid(appid)
     if status not in app.status:

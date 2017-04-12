@@ -26,47 +26,47 @@ cache = SimpleCache()
 #broadcaster = Broadcaster()
 #cluster = Clustering()
 
-def read_brd(thread_name):
-    logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)
-    broadcaster.start()
-    cluster.join()
-    while True:
-        logger.debug('[Thread-%d] Wating for broadcast massages' % \
-                                                        thread_name)
-        MessageHandling(broadcaster.read())
+# def read_brd(thread_name):
+#     logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)
+#     broadcaster.start()
+#     cluster.join()
+#     while True:
+#         logger.debug('[Thread-%d] Wating for broadcast massages' % \
+#                                                         thread_name)
+#         MessageHandling(broadcaster.read())
 
 
-def ping_brd(thread_name):
-    logger.debug('[Thread-%d] Loading Clustering Pinger' % thread_name)
-    while True:
-        time.sleep(30)
-        logger.debug('[Thread-%d] Telling to cluster that I am alive' % \
-                                                            thread_name)
-        cluster.ping()
+# def ping_brd(thread_name):
+#     logger.debug('[Thread-%d] Loading Clustering Pinger' % thread_name)
+#     while True:
+#         time.sleep(30)
+#         logger.debug('[Thread-%d] Telling to cluster that I am alive' % \
+#                                                             thread_name)
+#         cluster.ping()
 
 
-def leave_cluster():
-    cluster.leave()
+# def leave_cluster():
+#     cluster.leave()
 
 
-def start_thread_read_brd():
-    logger.info('Starting new Thread [%d]' % 1)
-    thread.start_new_thread(read_brd,(1,))
+# def start_thread_read_brd():
+#     logger.info('Starting new Thread [%d]' % 1)
+#     thread.start_new_thread(read_brd,(1,))
 
 
-def start_thread_ping_brd():
-    logger.info('Starting new Thread [%d]' % 2)
-    thread.start_new_thread(ping_brd,(2,))
+# def start_thread_ping_brd():
+#     logger.info('Starting new Thread [%d]' % 2)
+#     thread.start_new_thread(ping_brd,(2,))
 
 
-start_thread_read_brd()
-start_thread_ping_brd()
-atexit.register(leave_cluster)
+# start_thread_read_brd()
+# start_thread_ping_brd()
+# atexit.register(leave_cluster)
 
 
-@app.route('/')
-def hello_world():
-    return str(cluster.get_nodes())
+# @app.route('/')
+# def hello_world():
+#     return str(cluster.get_nodes())
 
 ## import routes
 app.register_blueprint(routes)

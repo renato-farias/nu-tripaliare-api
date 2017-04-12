@@ -23,8 +23,8 @@ logging.config.dictConfig(yaml.load(open('config/logging.yaml')))
 logger = app.logger
 
 cache = SimpleCache()
-broadcaster = Broadcaster()
-cluster = Clustering()
+#broadcaster = Broadcaster()
+#cluster = Clustering()
 
 def read_brd(thread_name):
     logger.debug('[Thread-%d] Loading Broadcaster' % thread_name)

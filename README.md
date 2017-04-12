@@ -5,6 +5,8 @@ nu-tripaliare-api
 
 curl -XPUT http://33.33.33.43:8081/api/schedule -d '{"name": "", "img": ""}' -H 'Content-Type: application/json'
 
+curl -XPOST http://33.33.33.43:8080/api/auth -d '{"user": "api", "pass": "Qui<coo9"}' -H 'Content-Type: application/json'
+
 curl -XPUT http://33.33.33.43:8080/api/schedule -d '{"name": "", "img": "", "date": "14/10/2017", "time": "10:30", "envs": {"env1": "valor"}}' -H 'Content-Type: application/json'
 
 

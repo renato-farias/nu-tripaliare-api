@@ -19,7 +19,7 @@ def auth_post():
         return http_code(400, 'user and pass keys are required.')
 
     if auth['user'] == api_auth_user and auth['pass'] == api_auth_pass:
-        authorization = b64encode(datetime.datetime.now())
+        authorization = b64encode(str(datetime.datetime.now()))
         login = {
             'authorizarion': authorization
         }

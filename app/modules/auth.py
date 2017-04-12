@@ -12,6 +12,6 @@ def requires_http_auth(f):
     def decorated(*args, **kwargs):
         auth = request.headers.get('Authorization')
         if auth is None or app.cache.get(auth) is not True:
-            return http_code(403, 'Access denied. Authorization header is missis or invalid')
+            return http_code(403, 'Access denied. User not authenticated')
         return f(*args, **kwargs)
     return decorated
